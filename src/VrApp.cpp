@@ -62,7 +62,7 @@ void VrApp::setup(){
     mCamUi = CameraUi( &mCam, app::App::get()->getWindow() );
     //    app::App::get()->getWindow()->getSignalMouseDown().connect([this](app::MouseEvent &event){ this->mouseDown(event); });
     //    app::App::get()->getWindow()->getSignalMouseDrag().connect([this](app::MouseEvent &event){ this->mouseDrag(event); });
-  
+
     app::App::get()->getWindow()->getSignalKeyDown().connect([this](app::KeyEvent &event){
       if(event.getChar() == '/')
         this->mCamUi.enable(!this->mCamUi.isEnabled());
@@ -109,7 +109,7 @@ void VrApp::draw(){
         this->renderVrSignal.emit();
       } else {
         gl::viewport( getWindowWidth() / 2, 0.0f, getWindowWidth() / 2, getWindowHeight() );
-//        gl::viewport(getWindowSize());
+        // gl::viewport(getWindowSize());
         gl::setMatricesWindow(getWindowSize());
         mHmd->drawMirrored(getWindowBounds(), true);
       }
@@ -120,6 +120,9 @@ void VrApp::draw(){
   #endif
 
   // draw "normal" (no VR)
+  gl::ScopedMatrices scpMat;
+  gl::ScopedViewport scpViewport(0,0, getWindowWidth(), getWindowHeight());
+
   gl::viewport( getWindowWidth() / 2, 0.0f, getWindowWidth() / 2, getWindowHeight() );
   //gl::viewport(getWindowSize());
   gl::setMatrices(mCam);

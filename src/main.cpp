@@ -2,6 +2,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Log.h"
 #include "cinder/CameraUi.h"
 // cinder blocks
 #include "cinderSyphon.h"
@@ -13,22 +14,22 @@ using namespace ci::app;
 using namespace std;
 
 class MainApp : public App {
-public:
-  // MainApp();
-  void setup() override;
-  void update() override;
-  void draw() override;
-  void keyDown(KeyEvent event) override;
+  public:
+    // MainApp();
+    void setup() override;
+    void update() override;
+    void draw() override;
+    void keyDown(KeyEvent event) override;
 
-private:
-  void createScenes();
-  void drawScene();
-  void drawDebugToFbo();
-  void activateScene(int idx);
+  private:
+    void createScenes();
+    void drawScene();
+    void drawDebugToFbo();
+    void activateScene(int idx);
 
-  VrApp vrApp;
-  ci::Timer timer;
-  syphonClient mClientSyphon;
+    VrApp vrApp;
+    ci::Timer timer;
+    syphonClient mClientSyphon;
 };
 
 void MainApp::setup() {
@@ -47,7 +48,6 @@ void MainApp::update() {
 void MainApp::draw() {
   gl::clear( Color( 0, 0, 0 ) );
   vrApp.draw(); // this will trigger our drawScene method (which was registered in our setup method)
-
   gl::draw(mClientSyphon.getTexture());
 }
 
