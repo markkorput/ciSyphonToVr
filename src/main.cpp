@@ -3,6 +3,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/CameraUi.h"
+// cinder blocks
+#include "cinderSyphon.h"
 // local
 #include "VrApp.h"
 
@@ -26,12 +28,15 @@ private:
 
   VrApp vrApp;
   ci::Timer timer;
+  syphonClient mClientSyphon;
 };
 
 void MainApp::setup() {
   // setWindowSize( 1280, 480 );
   vrApp.setup();
   vrApp.renderSceneSignal.connect([this](){ this->drawScene(); });
+
+  mClientSyphon.set("", "Simple Server");
 }
 
 void MainApp::update() {
@@ -42,6 +47,8 @@ void MainApp::update() {
 void MainApp::draw() {
   gl::clear( Color( 0, 0, 0 ) );
   vrApp.draw(); // this will trigger our drawScene method (which was registered in our setup method)
+
+  gl::draw(mClientSyphon.getTexture());
 }
 
 void MainApp::drawScene(){
