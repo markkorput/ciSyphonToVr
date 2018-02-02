@@ -1,0 +1,9 @@
+[submodule "dependencies/ciCMS"]
+	path = dependencies/ciCMS
+	url = git@github.com:markkorput/ciCMS.git
+[submodule "dependencies/Cinder-VR"]
+	path = dependencies/Cinder-VR
+	url = git@github.com:cinder/Cinder-VR.git
+[submodule "dependencies/Cinder-poScene"]
+	path = dependencies/Cinder-poScene
+	url = git@github.com:markkorput/Cinder-poScene.git
