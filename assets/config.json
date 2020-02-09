@@ -1,0 +1,16 @@
+{
+  "Runner": {},
+  "Runner.VrApp": {"autoDraw":true, "leftEyeEmit":"drawLeftEye", "rightEyeEmit":"drawRightEye"},
+
+
+  "Runner.left.SyphonClient": {"server":"LeftEyeServer"},
+  "Runner.left.UiRenderer": {"renderOn": "drawLeftEye", "build": "LeftEye.UiScene"},
+
+  "Runner.right.SyphonClient": {"server":"RightEyeServer"},
+  "Runner.right.UiRenderer": {"renderOn": "drawRightEye", "build": "RightEye.UiScene"},
+
+  "LeftEye.UiScene": {},
+  "LeftEye.UiScene.UiSyphonClient": {"client": "Runner.left.SyphonClient"},
+  "RightEye.UiScene": {},
+  "RightEye.UiScene.UiSyphonClient": {"client": "Runner.right.SyphonClient"}
+}

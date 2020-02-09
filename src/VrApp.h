@@ -1,12 +1,12 @@
 #pragma once
 
 // EANBLE VR ON WINDOWS
-#ifdef CINDER_MSW
+// #ifdef CINDER_MSW
   #define VR_ENABLED
-#endif
+// #endif
 
 #ifdef VR_ENABLED
-  #include "cinder/vr/vr.h"
+  #include "cinder/vr/Vr.h"
   // VR implementation based on;
   // https://gist.github.com/lithium-snepo/772eddede79b960666e521a8d1789d9c
   // and Cinder-VR block's Basic samples
@@ -31,13 +31,13 @@ public:
   void mouseDrag(ci::app::MouseEvent event);
   void keyDown(ci::app::KeyEvent event);
 
-  ci::Camera* getActiveCamera(){
-    #ifdef VR_ENABLED
-      if(this->mHmd)
-        return &this->getEyeCamera(ci::vr::EYE_HMD);
-    #endif
-    return &this->mCam;
-  }
+  // ci::Camera* getActiveCamera(){
+  //   #ifdef VR_ENABLED
+  //     if(this->mHmd)
+  //       return &this->getEyeCamera(ci::vr::EYE_HMD);
+  //   #endif
+  //   return &this->mCam;
+  // }
 public: // signals
 
   ci::signals::Signal<void(void)>
@@ -48,9 +48,9 @@ public: // signals
 private: // attributes
 
   #ifdef VR_ENABLED
-    vr::Context* mVrContext = nullptr;
-    vr::Hmd* mHmd = nullptr;
-    const vr::Controller* pController = NULL;
+    ci::vr::Context* mVrContext = nullptr;
+    ci::vr::Hmd* mHmd = nullptr;
+    const ci::vr::Controller* pController = NULL;
 
     // Only applies to HTC Vive with standing tracking origin
     bool mRecalcOrigin = false;

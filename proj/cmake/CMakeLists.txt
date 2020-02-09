@@ -14,5 +14,5 @@ ci_make_app(
 	SOURCES     ${APP_SOURCES}
 	INCLUDES	${APP_PATH}/include
 	CINDER_PATH ${CINDER_PATH}
-	BLOCKS Cinder-Syphon
+	BLOCKS Cinder-Syphon Cinder-VR
 )
